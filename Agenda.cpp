@@ -1,5 +1,5 @@
 /*****************************
- Librerï¿½as utilizadas
+ Librerias utilizadas
 *****************************/
 #include <iostream>					/*Flujo de entrada y salida de datos*/
 #include <string.h>					/*Funciones de manejo de cadenas*/
@@ -7,6 +7,7 @@
 #include <stdio.h>
 
 #define CANTIDAD 500 				/*Cantidad mï¿½xima de contactos: 500*/
+#define color SetConsoleTextAttribute
 
 using namespace std;
 
@@ -160,6 +161,8 @@ int main(int argc, char *argv[]) {
 }
 
 int MenuPrimario(){
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	color(hConsole,1);
 	char x;										/*Sirve para almacenar la respuesta (opci?n)*/
 	
 	LimpiarPantalla();
@@ -183,6 +186,9 @@ int MenuPrimario(){
 }
 
 int MenuSecundario(){
+
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	color(hConsole, 2);
 	int x;
 	
 	LimpiarPantalla();
@@ -292,6 +298,9 @@ void Insertar(struct Agenda Contactos[]){
 }
 
 void Buscar(struct Agenda Contactos[]){
+
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	color(hConsole,3);
 	int x;
 	int salir = 0;                                      /*bandera para salir*/
 	
@@ -332,6 +341,9 @@ void Buscar(struct Agenda Contactos[]){
 }
 
 int BuscarMenuCategoria(){
+
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	color(hConsole,4);
 	int x; 
 	
 	cout << endl << "\n\t\t     Realizar bï¿½squeda por:" << endl << endl;
@@ -532,6 +544,9 @@ void Imprimir(struct Agenda Contactos[], int posicion){
 }
 
 void Actualizar(struct Agenda Contactos[], int posicion){
+
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	color(hConsole,4);
 	int x; 
 	string Nombre, Telefono, Celular, Email;			/*Declaraci?n de variables que almacenar?n una copia*/
 	int salir = 0;                                      /*bandera para salir*/
@@ -545,8 +560,8 @@ void Actualizar(struct Agenda Contactos[], int posicion){
 		
 		/*Menï¿½ para seleccionar qu? atributos desean actualizar*/
 		do {
-			cout << "\n\t¿Qué dato le gustaría actualizar de este contacto?" << endl;
-			cout << "  (1)Nombre | (2)Teléfono | (3)Celular (4)Email | (5)Ninguno" << endl;
+			cout << "\n\tQue dato le gustaria actualizar de este contacto?" << endl;
+			cout << "  (1)Nombre | (2)Telï¿½fono | (3)Celular (4)Email | (5)Ninguno" << endl;
 			cout << Regla << endl;
 			
 			cout << "Esperando respuesta: ";
@@ -632,6 +647,9 @@ int VerificarContacto(struct Agenda Contactos[], string Nombre){
 }
 
 void CargarContactos(struct Agenda Contactos[]){
+
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	color(hConsole,7);
 	int x;
 	
 	/*Cargar datos por omisi?n para realizar pruebas r?pidas de las opciones
@@ -641,7 +659,7 @@ void CargarContactos(struct Agenda Contactos[]){
 		LimpiarPantalla();
 			
 		cout << Regla << endl;
-		cout << "|\tBienvenido a tu Agenda Electr?nica (Contactos)\t    |" << endl;
+		cout << "|\tBienvenido a tu Agenda Electronica (Contactos)\t    |" << endl;
 		cout << Regla << endl;
 			
 		cout << "(1) Cargar contactos previos | (2) Nueva agenda | (3) Salir |" << endl;
@@ -711,14 +729,14 @@ bool HayContactos(struct Agenda Contactos[]){
 			c++;
 	
 	if (c > 0)
-		return false; //Está vació
+		return false; //Estï¿½ vaciï¿½
 	
 	return true;
 }
 
 void Detenerse(){
-	cout << "\t¡Presione una tecla para continuar!";
-	system("PAUSE");								/*Pausar la aplicación sin mensaje de salida*/
+	cout << "\tï¿½Presione una tecla para continuar!";
+	system("PAUSE");								/*Pausar la aplicaciï¿½n sin mensaje de salida*/
 }
 
 void LimpiarPantalla(){
@@ -734,8 +752,8 @@ int Salir(){
 	
 	/*Centinela general*/
 	do {
-		cout << "\n\t¿Está seguro(a) de querer hacerlo?" << endl;
-		cout << "\t(1) Sí, (2) No: ";
+		cout << "\n\tï¿½Estï¿½ seguro(a) de querer hacerlo?" << endl;
+		cout << "\t(1) Sï¿½, (2) No: ";
 		cin >> x;
 		
 	} while(x < 1 || x > 2);
